@@ -5,7 +5,4 @@ ENV MYSQL_ROOT_PASSWORD="vprodbpass"
 ENV MYSQL_DATABASE="accounts"
 
 
-ADD db_backup.sql docker-entrypoint-initdb.d/db_backup.sql
-
-RUN chown mysql:mysql /docker-entrypoint-initdb.d/db_backup.sql \
-    && chmod 777 /docker-entrypoint-initdb.d/db_backup.sql
+COPY --chown=mysql:mysql --chmod=644 db_backup.sql /docker-entrypoint-initdb.d/
