@@ -13,10 +13,7 @@ services:
 
 
   demoweb:
-    build:
-      context: ./Docker-files/web
-    image: demoweb_image
-    container_name: demoweb_container
+    image: nginx
     # ports:
     #   - "80:80"
 
