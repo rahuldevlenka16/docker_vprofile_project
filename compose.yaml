@@ -4,8 +4,8 @@ services:
       context: ./Docker-files/db
     image: demodb_image
     container_name: demodb_container
-    ports:
-      - "3306:3306"
+    # ports:
+    #   - "3306:3306"
     volumes:
       - demodbdata:/var/lib/mysql
     environment:
@@ -17,8 +17,8 @@ services:
       context: ./Docker-files/web
     image: demoweb_image
     container_name: demoweb_container
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
 
   demoapp:
     build: 
@@ -26,19 +26,19 @@ services:
     image: demoapp_image
     container_name: demoapp_container
     ports:
-      - "8089:8080"
+      - "9067:8080"
     volumes:
       - demoappdata:/usr/local/tomcat/webapps
 
   democache:
     image: memcached
-    ports:
-      - "11211:11211"
+    # ports:
+    #   - "11211:11211"
 
   demomq:
     image: rabbitmq
-    ports:
-      - "5672:5672"
+    # ports:
+    #   - "5672:5672"
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
