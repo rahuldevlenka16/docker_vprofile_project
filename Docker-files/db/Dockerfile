@@ -6,3 +6,6 @@ ENV MYSQL_DATABASE="accounts"
 
 
 ADD db_backup.sql docker-entrypoint-initdb.d/db_backup.sql
+
+RUN chown mysql:mysql /docker-entrypoint-initdb.d/db_backup.sql \
+    && chmod 644 /docker-entrypoint-initdb.d/db_backup.sql
