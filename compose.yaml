@@ -1,0 +1,38 @@
+services:
+  mysqldb:
+    build: 
+      context: ./Docker-files/db
+    image: demodb_image
+    container_name: vprodb
+    ports:
+      - "3306:3306"
+    volumes:
+      - demodbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbpass
+
+
+  webserver:
+    build:
+      context: ./Docker-files/web
+    image: demoweb_image
+    container_name: demoweb
+    ports:
+      - "80:80"
+
+  app:
+    build: 
+      context: ./Docker-files/app
+    image: demoapp_image
+    container_name: demoapp
+    ports:
+      - "8089:8080"
+    volumes:
+      - demoappdata:/usr/local/tomcat/webapps
+
+
+  
+
+volumes:
+  demodbdata: {}
+  demoappdata: {}
