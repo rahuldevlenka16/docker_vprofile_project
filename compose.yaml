@@ -10,6 +10,7 @@ services:
       - demodbdata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=vprodbpass
+    restart: always
 
 
   # demoweb:
